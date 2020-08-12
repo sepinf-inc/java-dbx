@@ -11,7 +11,7 @@ import java.io.ByteArrayOutputStream;
  * @version 1.0
  */
 public class OEMessage extends OEBase {
-	private int marker;
+    public int marker;
 	/**
 	 * Length of the body of the message
 	 */
@@ -48,6 +48,9 @@ public class OEMessage extends OEBase {
 	 */
 	public OEMessage(OEData data, int i) {
 		marker = toInt4(data, i);
+        if (marker < 0)
+            return;
+
 		bodylength = toInt4(data, i + 4);
 		seglength = toInt4(data, i + 8);
 		next = toInt4(data, i + 12);

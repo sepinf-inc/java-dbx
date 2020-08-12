@@ -115,7 +115,7 @@ public class OutlookDBXParserImpl extends AbstractParser {
 				// processamento dos emails filhos do nó atual
 				try {
 					messageInfo = new OEMessageInfo(data, t.value[i]);
-					if(messageInfo.message.bytes.size() > 100)
+                    if (messageInfo.message.bytes.size() > 100 && messageInfo.message.marker >= 0)
 						processEmail(messageInfo, extractor, handler);
 
 				} catch (Throwable e) {
